@@ -1,0 +1,41 @@
+一、数据库备份脚本部署：
+1、将OracleBackup.sh拷贝至数据库服务器/home/oracle/目录下，并将脚本中的ip改成应用服务器ip
+2、赋权限文件执行：
+	chmod 755 /home/oracle/OracleBackup.sh
+3、数据库服务器oracle用户生成公钥：
+	su - oracle；
+	ssh-keygen -t rsa  //一路回车即可
+4、免密登陆应用服务器：
+	数据库服务器oracle用户运行：
+	scp /home/enovell/.ssh/id_rsa.pub root@172.23.1.5:/root/.ssh/authorized_keys  //根据现场应用服务器ip改
+5、应用服务器创建存放备份文件的目录：
+	mkdir -p  /opt/OracleBackup
+	
+	
+linux定时任务：
+1、编写一条定时任务
+[root@localhost /]# crontab -e
+
+crontab -r
+添加以下内容：
+59 23 * * * /home/oracle/backup.sh
+
+*/5 * * * * /home/oracle/backup.sh
+
+*/5 * * * * /home/MongoDBBackup/MongoDBBackup.sh
+2、crond启动服务
+service crond start
+service crond stop
+service crond restart
+service crond reload
+service crond status
+
+centos7
+/bin/systemctl start crond
+/bin/systemctl stop crond
+/bin/systemctl restart crond
+/bin/systemctl reload crond
+/bin/systemctl status crond
+
+3、加入开机自己主动启动：
+chkconfig -level  35 crond on
