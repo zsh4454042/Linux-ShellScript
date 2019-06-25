@@ -15,8 +15,6 @@
 linux定时任务：
 1、编写一条定时任务
 [root@localhost /]# crontab -e
-
-crontab -r
 添加以下内容：
 59 23 * * * /home/oracle/backup.sh
 
