@@ -1,4 +1,10 @@
 # Linux 应用系统自动启动：
+## 1.Oracle启动
+## 2.MongoDB启动
+## 3.Redis启动
+## 4.Tomcat启动
+## 5.Microservices启动
+# 使用说明：
 ## 1. 将本目录下所有*.sh脚本文件拷贝到/opt目录下
 ## 2. 将所有*.sh脚本文件赋予执行权限
 ```bash
@@ -16,5 +22,3 @@ echo "/opt/ApplicationMainAutostart.sh" >> /etc/rc.local
 echo "/opt/ApplicationMainAutostart.sh" >> /etc/rc.d/rc.local
 chmod +x /etc/rc.d/rc.local
 ```
-
-
